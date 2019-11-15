@@ -7,6 +7,6 @@ exports.uuidv4 = function () {
     });
 };
 exports.ts = function () {
-    return new Date().getTime();
+    return Date.now();
 };
 //# sourceMappingURL=utils.js.map

@@ -43,12 +43,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.soterApi = {
+exports.soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
     recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
 };
-exports.soterApiTest = {
+exports.soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
     recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
@@ -121,10 +121,7 @@ var Soter = /** @class */ (function () {
                         formData.append("raw_data", JSON.stringify(raw_data));
                         formData.append("signature", signature);
                         formData.append("file", file);
-                        return [4 /*yield*/, Axios.post(this.api.add, {
-                                data: formData,
-                                onUploadProgress: !!progressHandler ? progressHandler : undefined
-                            })];
+                        return [4 /*yield*/, Axios.post(this.api.add, formData)];
                     case 2:
                         _a = _b.sent(), status = _a.status, data = _a.data;
                         console.log(status, data);

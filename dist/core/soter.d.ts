@@ -8,12 +8,12 @@ export interface SoterAddResponse {
     message: string;
     cid?: string;
 }
-export declare const soterApi: {
+export declare const soterApiTest: {
     inquiry: string;
     add: string;
     recharge: string;
 };
-export declare const soterApiTest: {
+export declare const soterApi: {
     inquiry: string;
     add: string;
     recharge: string;

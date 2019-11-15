@@ -18,13 +18,13 @@ export interface SoterAddResponse{
 
 }
 
-export const soterApi = {
+export const soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
     recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
 };
 
-export const soterApiTest = {
+export const soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
     recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
@@ -88,10 +88,7 @@ export class Soter{
 
         
 
-        const {status, data} = await Axios.post(this.api.add, {
-            data: formData,
-            onUploadProgress: !!progressHandler ? progressHandler : undefined
-        });
+        const {status, data} = await Axios.post(this.api.add, formData);
 
         console.log(status, data);
 
