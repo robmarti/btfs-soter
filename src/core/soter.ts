@@ -60,7 +60,7 @@ export class Soter{
     }
 
     async recharge(amount: number): Promise<void> {
-        const res = await this.tronweb.transactionBuilder.sendToken(this.api.recharge, amount, "1002000");
+        const res = await this.tronweb.trx.sendToken(this.api.recharge, amount, "1002000");
         console.log(res);
     }
 
