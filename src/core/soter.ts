@@ -67,7 +67,7 @@ export class Soter{
     async add( file: File, progressHandler: (...args: any[]) => void): Promise<SoterAddResponse>{
 
         const request_user = this.tronweb.defaultAddress.base58;
-        const signed_user = this.tronweb.default.base58;
+        const signed_user = this.tronweb.defaultAddress.base58;
         const request_id = uuidv4();
         const timestamp = ts();
 

@@ -105,7 +105,7 @@ var Soter = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         request_user = this.tronweb.defaultAddress.base58;
-                        signed_user = this.tronweb.default.base58;
+                        signed_user = this.tronweb.defaultAddress.base58;
                         request_id = utils_1.uuidv4();
                         timestamp = utils_1.ts();
                         raw_data = {
