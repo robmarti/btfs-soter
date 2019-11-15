@@ -89,7 +89,7 @@ var Soter = /** @class */ (function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.tronweb.trx.sendTransaction(this.api.recharge, amount, "1002000")];
+                    case 0: return [4 /*yield*/, this.tronweb.transactionBuilder.sendToken(this.api.recharge, amount, "1002000")];
                     case 1:
                         res = _a.sent();
                         console.log(res);
