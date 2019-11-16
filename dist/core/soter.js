@@ -46,12 +46,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
-    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
+    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
 };
 exports.soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
-    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
+    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
 };
 var utils_1 = require("./utils");
 var axios = __importStar(require("axios"));
