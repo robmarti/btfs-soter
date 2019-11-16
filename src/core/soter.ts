@@ -18,13 +18,13 @@ export interface SoterAddResponse{
 
 }
 
-export const soterApiTest = {
+const soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
     recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
 };
 
-export const soterApi = {
+const soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
     recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
@@ -47,24 +47,21 @@ export class Soter{
 
         const user_address = this.tronweb.defaultAddress.base58;
 
-        const {status, data} = await Axios.get( this.api.inquiry , {
+        const {data} = await Axios.get( this.api.inquiry , {
             params: {
                 user_address,
                 file_size
             }
         });
-
-        console.log(status, data);
         
         return data;
     }
 
-    async recharge(amount: number): Promise<void> {
-        const res = await this.tronweb.trx.sendToken(this.api.recharge, amount, "1002000");
-        console.log(res);
+    async recharge(amount: number): Promise<any> {
+        return await this.tronweb.trx.sendToken(this.api.recharge, amount, "1002000");
     }
 
-    async add( file: File, progressHandler: (...args: any[]) => void): Promise<SoterAddResponse>{
+    async add( file: File ): Promise<SoterAddResponse>{
 
         const request_user = this.tronweb.defaultAddress.base58;
         const signed_user = this.tronweb.defaultAddress.base58;
@@ -86,11 +83,7 @@ export class Soter{
         formData.append("signature", signature);
         formData.append("file", file);
 
-        
-
-        const {status, data} = await Axios.post(this.api.add, formData);
-
-        console.log(status, data);
+        const {data} = await Axios.post(this.api.add, formData);
 
         return data;
     }

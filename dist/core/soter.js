@@ -43,12 +43,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.soterApiTest = {
+var soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
     recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
 };
-exports.soterApi = {
+var soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
     recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
@@ -61,13 +61,13 @@ var Soter = /** @class */ (function () {
         if (tronweb === void 0) { tronweb = window.tronWeb; }
         if (isTest === void 0) { isTest = true; }
         this.tronweb = tronweb;
-        this.api = isTest ? exports.soterApiTest : exports.soterApi;
+        this.api = isTest ? soterApiTest : soterApi;
     }
     Soter.prototype.inquiry = function (file_size) {
         return __awaiter(this, void 0, void 0, function () {
-            var user_address, _a, status, data;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var user_address, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         user_address = this.tronweb.defaultAddress.base58;
                         return [4 /*yield*/, Axios.get(this.api.inquiry, {
@@ -77,8 +77,7 @@ var Soter = /** @class */ (function () {
                                 }
                             })];
                     case 1:
-                        _a = _b.sent(), status = _a.status, data = _a.data;
-                        console.log(status, data);
+                        data = (_a.sent()).data;
                         return [2 /*return*/, data];
                 }
             });
@@ -86,23 +85,19 @@ var Soter = /** @class */ (function () {
     };
     Soter.prototype.recharge = function (amount) {
         return __awaiter(this, void 0, void 0, function () {
-            var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.tronweb.trx.sendToken(this.api.recharge, amount, "1002000")];
-                    case 1:
-                        res = _a.sent();
-                        console.log(res);
-                        return [2 /*return*/];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     };
-    Soter.prototype.add = function (file, progressHandler) {
+    Soter.prototype.add = function (file) {
         return __awaiter(this, void 0, void 0, function () {
-            var request_user, signed_user, request_id, timestamp, raw_data, signature, formData, _a, status, data;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var request_user, signed_user, request_id, timestamp, raw_data, signature, formData, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         request_user = this.tronweb.defaultAddress.base58;
                         signed_user = this.tronweb.defaultAddress.base58;
@@ -116,15 +111,14 @@ var Soter = /** @class */ (function () {
                         };
                         return [4 /*yield*/, this.tronweb.trx.sign(this.tronweb.toHex(JSON.stringify(raw_data)))];
                     case 1:
-                        signature = _b.sent();
+                        signature = _a.sent();
                         formData = new FormData();
                         formData.append("raw_data", JSON.stringify(raw_data));
                         formData.append("signature", signature);
                         formData.append("file", file);
                         return [4 /*yield*/, Axios.post(this.api.add, formData)];
                     case 2:
-                        _a = _b.sent(), status = _a.status, data = _a.data;
-                        console.log(status, data);
+                        data = (_a.sent()).data;
                         return [2 /*return*/, data];
                 }
             });
