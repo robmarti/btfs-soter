@@ -19,6 +19,13 @@
     "soter",
     "file-storage"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robmarti/btfs-soter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robmarti/btfs-soter.git/issues"
+  },
   "author": "robmarti",
   "license": "MIT"
 }
