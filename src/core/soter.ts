@@ -21,13 +21,13 @@ export interface SoterAddResponse{
 export const soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
-    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
+    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
 };
 
 export const soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
-    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
+    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
 };
 
 import {uuidv4, ts} from "./utils";
