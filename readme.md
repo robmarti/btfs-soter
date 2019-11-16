@@ -1,6 +1,6 @@
-#API Documentation
+# API Documentation
 
-###Soter
+### Soter
 The Soter `constructor` takes two optional arguments. A `TronWeb` instance and a `boolean`
 indicating whether to use the Testnet or Mainnet parameters internally. If no
 `TronWeb` instance is passed to the constructor, it will default to `window.tronWeb`.
@@ -23,12 +23,12 @@ const soter = new Soter(tronweb, false);
 
 ```
 
-###Soter.inquiry(file_size: number): Promise < SoterInquiryResponse >
+### Soter.inquiry(file_size: number): Promise < SoterInquiryResponse >
 Check whether your currently logged in account has sufficient BTT balance in Soter
 to upload a file with the given `file_size` (in Bytes).
 
-###Soter.add(file: File): Promise < SoterAddResponse >
+### Soter.add(file: File): Promise < SoterAddResponse >
 Upload a given `File` to BTFS via Soter.
 
-###Soter.recharge( amount: number )
+### Soter.recharge( amount: number )
 Recharge BTT balance with the given `amount` in Soter
