@@ -1,17 +1,17 @@
 # API Documentation
 
-### Soter
-The Soter `constructor` takes two optional arguments. A `TronWeb` instance and a `boolean`
-indicating whether to use the Testnet or Mainnet parameters internally. If no
-`TronWeb` instance is passed to the constructor, it will default to `window.tronWeb`.
-If no `isTest` parameter is passed, it will default to `true`
+### Soter(options: SoterOptions)
+
+Options may contain a `tronweb` property with a `TronWeb` instance (defaults to
+`window.tronWeb`) as well as an `isTest` property (defaults to `false`);
 
 ```
-// Testnet Soter instance using window.tronWeb
-const testSoter = new Soter()
-
 // Mainnet Soter instance using window.tronWeb
-const tronLinkSoter = new Soter(undefined, false);
+const soter = new Soter()
+
+// Testnet Soter instance using window.tronWeb 
+// If you use TronLink, make sure to switch to Shasta Testnet
+const testSoter = new Soter({isTest: true});
 
 // Soter instance using a custom TronWeb instance
 const tronweb = new TronWeb({
@@ -19,16 +19,31 @@ const tronweb = new TronWeb({
                     privateKey: 'your private key'
                 });
 
-const soter = new Soter(tronweb, false);
+const options = {
+    tronweb,
+    isTest: false
+}
+
+const soter = new Soter(options);
 
 ```
 
-### Soter.inquiry(file_size: number): Promise < SoterInquiryResponse >
+### inquiry
+```
+inquiry(file_size: number): Promise<SoterInquiryResponse>
+```
 Check whether your currently logged in account has sufficient BTT balance in Soter
 to upload a file with the given `file_size` (in Bytes).
 
-### Soter.add(file: File): Promise < SoterAddResponse >
+### add
+```
+add(file: File): Promise <SoterAddResponse>
+```
 Upload a given `File` to BTFS via Soter.
 
-### Soter.recharge( amount: number )
-Recharge BTT balance with the given `amount` in Soter
+### recharge
+```
+recharge(amount: number): Promise<any>
+```
+Recharge BTT balance with the given `amount`(e.g. amount 1 will
+recharge 0.000001 BTT, amount 1000000 will recharge 1 BTT) in Soter

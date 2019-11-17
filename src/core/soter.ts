@@ -18,6 +18,14 @@ export interface SoterAddResponse{
 
 }
 
+export interface SoterOptions {
+
+    tronweb?: any;
+
+    isTest?: boolean;
+
+}
+
 const soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
@@ -39,8 +47,19 @@ export class Soter{
 
     private api: { inquiry: string, add: string, recharge: string};
 
-    constructor(private tronweb: any = (window as any).tronWeb, isTest:boolean = true){
-        this.api = isTest ? soterApiTest : soterApi;
+    private tronweb: any;
+
+    constructor(options: SoterOptions){
+
+        if(!options){
+            options = {
+                tronweb: (window as any).tronWeb,
+                isTest: false
+            };
+        }
+
+        this.tronweb = !!options.tronweb ? options.tronweb : (window as any).tronWeb;
+        this.api = !!options.isTest ? soterApiTest : soterApi;
     }
 
     async inquiry(file_size: number): Promise<SoterInquiryResponse> {
