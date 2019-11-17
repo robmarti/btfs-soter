@@ -1,6 +1,6 @@
 {
   "name": "btfs-soter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TypeScript/JavaScript API to interact with BTFS Soter through the web",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
