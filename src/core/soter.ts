@@ -49,14 +49,7 @@ export class Soter{
 
     private tronweb: any;
 
-    constructor(options: SoterOptions){
-
-        if(!options){
-            options = {
-                tronweb: (window as any).tronWeb,
-                isTest: false
-            };
-        }
+    constructor(options: SoterOptions = {tronweb: (window as any).tronWeb, isTest: false}){
 
         this.tronweb = !!options.tronweb ? options.tronweb : (window as any).tronWeb;
         this.api = !!options.isTest ? soterApiTest : soterApi;
