@@ -29,13 +29,15 @@ export interface SoterOptions {
 const soterApiTest = {
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
-    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek"
+    recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek",
+    tokenId: "1000008"
 };
 
 const soterApi = {
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
-    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr"
+    recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr",
+    tokenId: "1002000"
 };
 
 import {uuidv4, ts} from "./utils";
@@ -45,7 +47,7 @@ const Axios = axios.default;
 
 export class Soter{
 
-    private api: { inquiry: string, add: string, recharge: string};
+    private api: { inquiry: string, add: string, recharge: string, tokenId: string};
 
     private tronweb: any;
 
@@ -70,7 +72,7 @@ export class Soter{
     }
 
     async recharge(amount: number): Promise<any> {
-        return await this.tronweb.trx.sendToken(this.api.recharge, amount, "1002000");
+        return await this.tronweb.trx.sendToken(this.api.recharge, amount, this.api.tokenId);
     }
 
     async add( file: File ): Promise<SoterAddResponse>{
