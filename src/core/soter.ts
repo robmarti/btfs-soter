@@ -27,6 +27,7 @@ export interface SoterOptions {
 }
 
 const soterApiTest = {
+    maxFileSize: 2 * 1024 * 1024 * 1024, // 2GB
     inquiry: "https://sandbox.btfssoter.io/api/v0/inquiry",
     add: "https://sandbox.btfssoter.io/api/v0/add",
     recharge: "TEAxH9kfc28syd1cBrwbsBz88QG5wPL8Ek",
@@ -34,6 +35,7 @@ const soterApiTest = {
 };
 
 const soterApi = {
+    maxFileSize: 2 * 1024 * 1024 * 1024, // 2GB
     inquiry: "https://api.btfssoter.io/api/v0/inquiry",
     add: "https://api.btfssoter.io/api/v0/add",
     recharge: "TMTqojR33e8QoB34bjsGi4D8zJgrFVopsr",
@@ -47,7 +49,7 @@ const Axios = axios.default;
 
 export class Soter{
 
-    private api: { inquiry: string, add: string, recharge: string, tokenId: string};
+    private api: { maxFileSize: number, inquiry: string, add: string, recharge: string, tokenId: string};
 
     private tronweb: any;
 
@@ -76,6 +78,10 @@ export class Soter{
     }
 
     async add( file: File ): Promise<SoterAddResponse>{
+
+        if(file.size > this.api.maxFileSize){
+            throw new Error("Your file exceeds the maximum file size");
+        }
 
         const request_user = this.tronweb.defaultAddress.base58;
         const signed_user = this.tronweb.defaultAddress.base58;
